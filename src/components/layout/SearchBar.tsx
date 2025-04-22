@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { useState } from "react";
@@ -25,18 +24,21 @@ const SearchBar = ({ placeholder = "Search...", onSearch }: SearchBarProps) => {
       className="relative flex w-full max-w-sm items-center space-x-2"
     >
       <div className="relative w-full">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <Search
+          className="absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+          onClick={handleSubmit}
+        />
         <Input
           type="text"
           placeholder={placeholder}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full pl-10"
+          className="w-full bg-white"
         />
       </div>
-      <Button type="submit" size="sm">
-        Search
-      </Button>
+      {/* <Button type="submit" size="sm">
+        <Search />
+      </Button> */}
     </form>
   );
 };
