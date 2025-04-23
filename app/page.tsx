@@ -1,14 +1,18 @@
 import Container from "@/components/layout/Container";
+import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import { Button } from "@/components/ui/button";
+import HeroBanner from "@/components/layout/HeroBanner";
+import AdGrid from "@/features/Ad/AdGrid";
 
 export default function Home() {
   return (
     <>
       <Header />
       <Container>
-        <Button>teszt</Button>
+        <HeroBanner />
+        <AdGrid />
       </Container>
+      <Footer />
     </>
   );
 }
