@@ -20,7 +20,7 @@ const AdCard = ({
   imageUrl,
 }: AdCardProps) => {
   return (
-    <Link href={`/annonce/${id}`} className="group">
+    <Link href={`/ad/${id}`} className="group">
       <div className="overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:shadow-md">
         <div className="relative h-48 w-full overflow-hidden">
           <Image

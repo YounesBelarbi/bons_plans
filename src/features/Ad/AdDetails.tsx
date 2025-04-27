@@ -1,14 +1,25 @@
-import Header from "@/components/header";
-import PhotoGallery from "@/components/photo-gallery";
-import PropertyDetails from "@/components/property-details";
-import PropertyMap from "@/components/property-map";
-import SimilarProperties from "@/components/similar-properties";
-import { adData } from "@/data/ad-data";
+// import Header from "@/components/header";
+import PhotoGallery from "@/components/ads/AdPhotoGallery";
+import PropertyDetails from "@/components/ads/AdPropertyDetail";
+import PropertyMap from "@/components/ads/AdPropertyMap";
+import SimilarProperties from "@/components/ads/AdSimilarProperty";
+import { adData } from "../../../data_to_delete/data.ts";
 import { notFound } from "next/navigation";
 
-const AdDetails = ({ params }: { params: { id: string } }) => {
-  const id = Number.parseInt(params.id);
-  const property = adData.find((ad) => ad.id === id);
+type AdDetailProps = {
+  params: { id: string };
+};
+
+const AdDetails: FC<AdDetailProps> = ({ params }) => {
+  console.log("🚀 ~ params:", params)
+  const { id } = params;
+  console.log("🚀 ~ AdDetails ~ id:", id);
+
+  // const id = Number.parseInt(params.id);
+  const property = adData.find((ad) => ad.id === Number.parseInt(id));
+  // const property = adData.find((ad) => ad.id === id);
+  console.log("🚀 ~ adData:", adData)
+  console.log("🚀 ~ property:", property)
 
   if (!property) {
     notFound();
@@ -28,7 +39,7 @@ const AdDetails = ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      {/* <Header /> */}
       <main className="flex-1">
         <div className="container px-4 py-8 md:px-6 md:py-12">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -45,7 +56,7 @@ const AdDetails = ({ params }: { params: { id: string } }) => {
 
           {/* Carte de localisation */}
           <div className="mt-12">
-            <h2 className="mb-4 text-xl font-bold">Localisation</h2>
+            <h2 className="mb-4 text-xl font-bold text-gray-800">Localisation</h2>
             <PropertyMap location={property.location} />
           </div>
 
@@ -57,6 +68,6 @@ const AdDetails = ({ params }: { params: { id: string } }) => {
       </main>
     </div>
   );
-};
+});
 
 export default AdDetails;
